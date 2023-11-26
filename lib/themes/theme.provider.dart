@@ -7,6 +7,7 @@ class ThemeProvider extends GetxController {
   final _key = 'isDarkMode';
 
   _saveThemeToBox(bool isDarkMode) => _box.write(_key, isDarkMode);
+
   bool _loadThemeFromBox() => _box.read(_key) ?? false;
 
   ThemeMode get theme => _loadThemeFromBox() ? ThemeMode.dark : ThemeMode.light;
@@ -14,16 +15,13 @@ class ThemeProvider extends GetxController {
   void switchTheme() {
     Get.changeThemeMode(_loadThemeFromBox() ? ThemeMode.light : ThemeMode.dark);
     _saveThemeToBox(!_loadThemeFromBox());
-    update(); // This will target a rebuild of BetBuilder<ThemeServices>
+    update(); // This will trigger a rebuild of GetBuilder<ThemeServices>
   }
 
-  Icon get icon => _loadThemeFromBox()
+  Icon get icon => !_loadThemeFromBox()
       ? const Icon(
-          Icons.dark_mode,
+          Icons.wb_sunny_outlined,
           color: Colors.white,
         )
-      : const Icon(
-          Icons.light_mode,
-          color: Colors.black,
-        );
+      : const Icon(Icons.nightlight_round, color: Colors.white);
 }

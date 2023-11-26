@@ -1,5 +1,6 @@
 import 'package:fitness/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({super.key});
@@ -9,7 +10,7 @@ class BottomNavigation extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 60,
-      color: secondaryColor,
+      color: Get.isDarkMode ? backgroundColor : secondaryColor,
       child: IconTheme(
         data: const IconThemeData(color: iconColor),
         child: Row(

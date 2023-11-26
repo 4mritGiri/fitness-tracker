@@ -4,12 +4,19 @@ import 'package:flutter/material.dart';
 class Themes {
   static final light = ThemeData(
     brightness: Brightness.light,
-    // primaryColor: primaryColor,
+    fontFamily: 'Roboto',
+    textTheme: const TextTheme(
+      headline1: TextStyle(
+        fontSize: 15,
+        color: backgroundColor,
+        fontWeight: FontWeight.w900,
+      ),
+    ),
     colorScheme: const ColorScheme.light(
+      background: Colors.white,
       primary: primaryColor,
-      // secondary: secondaryColor,
+      secondary: secondaryColor,
       surface: secondaryColor,
-      background: backgroundColor,
       error: errorColor,
       onPrimary: secondaryColor,
       onSecondary: primaryColor,
@@ -20,12 +27,11 @@ class Themes {
   );
   static final dark = ThemeData(
     brightness: Brightness.dark,
-    // primaryColor: primaryColor,
     colorScheme: const ColorScheme.dark(
-      // primary: primaryColor,
+      background: backgroundColor,
+      primary: primaryColor,
       // secondary: secondaryColor,
       // surface: secondaryColor,
-      background: backgroundColor,
       error: errorColor,
       onPrimary: secondaryColor,
       onSecondary: primaryColor,
