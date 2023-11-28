@@ -33,7 +33,7 @@ class AppHeader extends StatelessWidget {
             ),
             Positioned(
               top: 20,
-              left: 20,
+              left: 10,
               child: IconButton(
                 onPressed: () {},
                 icon: const Icon(
@@ -44,7 +44,7 @@ class AppHeader extends StatelessWidget {
             ),
             Positioned(
               top: 20,
-              left: 70,
+              left: 60,
               child: IconButton(
                 onPressed: () {
                   themeProvider.switchTheme();

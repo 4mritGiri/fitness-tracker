@@ -1,15 +1,22 @@
 import 'package:fitness/constants/colors.dart';
+import 'package:fitness/models/fitnessProgram.dart';
 import 'package:flutter/material.dart';
 
-class CurrentPrograms extends StatelessWidget {
+class CurrentPrograms extends StatefulWidget {
   const CurrentPrograms({super.key});
 
+  @override
+  State<CurrentPrograms> createState() => _CurrentProgramsState();
+}
+
+class _CurrentProgramsState extends State<CurrentPrograms> {
+  ProgramType active = fitnessProgram[0].type;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -17,7 +24,7 @@ class CurrentPrograms extends StatelessWidget {
                 "Current Programs",
                 style: Theme.of(context).textTheme.headline1,
               ),
-              Icon(Icons.arrow_forward_ios)
+              const Icon(Icons.arrow_forward_ios)
             ],
           ),
         ),
@@ -25,11 +32,15 @@ class CurrentPrograms extends StatelessWidget {
           width: double.infinity,
           height: 120,
           child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (contex, index) {
-                return Program();
-              }),
+            scrollDirection: Axis.horizontal,
+            itemCount: fitnessProgram.length,
+            itemBuilder: (context, index) {
+              return Program(
+                program: fitnessProgram[index],
+                active: fitnessProgram[index].type == active,
+              );
+            },
+          ),
         )
       ],
     );
@@ -37,59 +48,66 @@ class CurrentPrograms extends StatelessWidget {
 }
 
 class Program extends StatelessWidget {
-  const Program({super.key});
+  final FitnessProgram program;
+  final bool active;
+  const Program({Key? key, required this.program, this.active = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 100,
       width: 200,
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         image: DecorationImage(
-          colorFilter: ColorFilter.mode(primaryColor, BlendMode.lighten),
-          image: NetworkImage(
-            'https://akfit.com/cdn/shop/articles/adobestock-275274164.jpg?v=1697480359&width=2000',
-          ),
+          colorFilter: ColorFilter.mode(
+              active
+                  ? primaryColor.withOpacity(.6)
+                  : secondaryColor.withOpacity(.8),
+              active ? BlendMode.multiply : BlendMode.lighten),
+          image: program.image,
           fit: BoxFit.cover,
         ),
       ),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            "Cardio",
-            style: TextStyle(
-              color: secondaryColor,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: DefaultTextStyle.merge(
+        style: TextStyle(
+          color: active ? secondaryColor : backgroundColor,
+          fontWeight: FontWeight.w500,
+          fontSize: 12,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              program.name,
+              style: const TextStyle(fontSize: 16),
             ),
-          ),
-          Row(
-            children: [
-              Text(
-                "220kal",
-                style: TextStyle(color: secondaryColor),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Icon(
-                Icons.access_time_sharp,
-                color: secondaryColor,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                "20min",
-                style: TextStyle(color: secondaryColor),
-              ),
-            ],
-          )
-        ],
+            Row(
+              children: [
+                Text(
+                  program.cals,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const Icon(
+                  Icons.access_time_sharp,
+                  size: 14,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  program.time,
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
