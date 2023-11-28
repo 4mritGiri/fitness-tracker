@@ -7,5 +7,5 @@ const Color iconColor = Color(0xffabadb4);
 const Color accentColor = Colors.deepPurple;
 const Color errorColor = Colors.red;
 const Color successColor = Colors.green;
-const Color warningColor = Colors.yellow;
+const Color warningColor = Color(0xfffa7a3b);
 const Color infoColor = Colors.blue;

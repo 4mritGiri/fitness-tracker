@@ -1,3 +1,5 @@
+import 'package:fitness/constants/colors.dart';
+import 'package:fitness/screens/details/widgets/appBar.dart';
 import 'package:fitness/screens/details/widgets/dates.dart';
 import 'package:fitness/screens/details/widgets/graph.dart';
 import 'package:fitness/screens/details/widgets/info.dart';
@@ -11,8 +13,9 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
+    return Scaffold(
+      appBar: MainAppBar(appBar: AppBar()),
+      body: const Column(
         children: [
           Dates(),
           Steps(),

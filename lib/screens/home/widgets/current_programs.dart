@@ -11,6 +11,13 @@ class CurrentPrograms extends StatefulWidget {
 
 class _CurrentProgramsState extends State<CurrentPrograms> {
   ProgramType active = fitnessProgram[0].type;
+
+  void _changeProgram(ProgramType newType) {
+    setState(() {
+      active = newType;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,6 +45,7 @@ class _CurrentProgramsState extends State<CurrentPrograms> {
               return Program(
                 program: fitnessProgram[index],
                 active: fitnessProgram[index].type == active,
+                onTap: _changeProgram,
               );
             },
           ),
@@ -50,63 +58,74 @@ class _CurrentProgramsState extends State<CurrentPrograms> {
 class Program extends StatelessWidget {
   final FitnessProgram program;
   final bool active;
-  const Program({Key? key, required this.program, this.active = false})
-      : super(key: key);
+  final Function(ProgramType) onTap;
+
+  const Program({
+    Key? key,
+    required this.program,
+    this.active = false,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: 200,
-      margin: const EdgeInsets.only(left: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        image: DecorationImage(
-          colorFilter: ColorFilter.mode(
-              active
-                  ? primaryColor.withOpacity(.6)
-                  : secondaryColor.withOpacity(.8),
-              active ? BlendMode.multiply : BlendMode.lighten),
-          image: program.image,
-          fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        onTap(program.type);
+      },
+      child: Container(
+        height: 100,
+        width: 200,
+        margin: const EdgeInsets.only(left: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          image: DecorationImage(
+            colorFilter: ColorFilter.mode(
+                active
+                    ? primaryColor.withOpacity(.6)
+                    : secondaryColor.withOpacity(.8),
+                active ? BlendMode.multiply : BlendMode.lighten),
+            image: program.image,
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      child: DefaultTextStyle.merge(
-        style: TextStyle(
-          color: active ? secondaryColor : backgroundColor,
-          fontWeight: FontWeight.w500,
-          fontSize: 12,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              program.name,
-              style: const TextStyle(fontSize: 16),
-            ),
-            Row(
-              children: [
-                Text(
-                  program.cals,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                const Icon(
-                  Icons.access_time_sharp,
-                  size: 14,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  program.time,
-                ),
-              ],
-            )
-          ],
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        child: DefaultTextStyle.merge(
+          style: TextStyle(
+            color: active ? secondaryColor : backgroundColor,
+            fontWeight: FontWeight.w500,
+            fontSize: 12,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                program.name,
+                style: const TextStyle(fontSize: 16),
+              ),
+              Row(
+                children: [
+                  Text(
+                    program.cals,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const Icon(
+                    Icons.access_time_sharp,
+                    size: 14,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    program.time,
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
