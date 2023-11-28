@@ -1,4 +1,3 @@
-import 'package:fitness/constants/colors.dart';
 import 'package:fitness/screens/details/widgets/appBar.dart';
 import 'package:fitness/screens/details/widgets/dates.dart';
 import 'package:fitness/screens/details/widgets/graph.dart';

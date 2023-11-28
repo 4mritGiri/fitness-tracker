@@ -1,7 +1,6 @@
 import 'package:fitness/constants/colors.dart';
 import 'package:fitness/widgets/helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class Dates extends StatelessWidget {
   const Dates({super.key});
