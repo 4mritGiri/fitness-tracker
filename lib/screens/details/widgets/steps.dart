@@ -9,8 +9,29 @@ class Steps extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 70,
-      color: secondaryColor,
-      child: Container(),
+      color: Colors.white,
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            '2000',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+              color: backgroundColor,
+            ),
+          ),
+          Text(
+            'steps',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+              color: backgroundColor,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

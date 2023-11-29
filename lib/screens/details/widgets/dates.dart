@@ -47,7 +47,12 @@ class DateBox extends StatelessWidget {
                 Color(0xff92e2ff),
                 Color(0xff1ebdf8),
               ], begin: Alignment.topCenter)
-            : null,
+            : date.weekday == 6
+                ? const LinearGradient(colors: [
+                    Color.fromARGB(255, 247, 11, 11),
+                    Color.fromARGB(255, 227, 6, 161)
+                  ], begin: Alignment.topCenter)
+                : null,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: const Color(0xffe1e1e1),
@@ -56,7 +61,9 @@ class DateBox extends StatelessWidget {
       child: DefaultTextStyle.merge(
         style: active
             ? const TextStyle(color: secondaryColor)
-            : const TextStyle(color: backgroundColor),
+            : date.weekday == 6
+                ? const TextStyle(color: secondaryColor)
+                : const TextStyle(color: backgroundColor),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
