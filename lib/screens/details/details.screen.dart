@@ -1,7 +1,7 @@
 import 'package:fitness/screens/details/widgets/appBar.dart';
 import 'package:fitness/screens/details/widgets/dates.dart';
 import 'package:fitness/screens/details/widgets/graph.dart';
-import 'package:fitness/screens/details/widgets/info.dart';
+import 'package:fitness/screens/details/widgets/info.dart' hide Stats;
 import 'package:fitness/screens/details/widgets/stats.dart';
 import 'package:fitness/screens/details/widgets/steps.dart';
 import 'package:fitness/widgets/bottom_navigation.dart';
