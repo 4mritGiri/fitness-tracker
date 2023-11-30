@@ -27,6 +27,14 @@ class Themes {
   );
   static final dark = ThemeData(
     brightness: Brightness.dark,
+    fontFamily: 'Roboto',
+    textTheme: const TextTheme(
+      headline1: TextStyle(
+        fontSize: 15,
+        color: secondaryColor,
+        fontWeight: FontWeight.w900,
+      ),
+    ),
     colorScheme: const ColorScheme.dark(
       background: backgroundColor,
       primary: primaryColor,

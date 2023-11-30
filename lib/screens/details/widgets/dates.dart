@@ -1,6 +1,7 @@
 import 'package:fitness/constants/colors.dart';
 import 'package:fitness/widgets/helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Dates extends StatelessWidget {
   const Dates({super.key});
@@ -63,7 +64,8 @@ class DateBox extends StatelessWidget {
             ? const TextStyle(color: secondaryColor)
             : date.weekday == 6
                 ? const TextStyle(color: secondaryColor)
-                : const TextStyle(color: backgroundColor),
+                : TextStyle(
+                    color: Get.isDarkMode ? secondaryColor : backgroundColor),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

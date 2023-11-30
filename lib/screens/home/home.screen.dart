@@ -18,8 +18,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             AppHeader(themeProvider: themeProvider),
             const CurrentPrograms(),
-            RecentActivities(),
-            BottomNavigation(),
+            const RecentActivities(),
+            const BottomNavigation(),
           ],
         ),
       ),

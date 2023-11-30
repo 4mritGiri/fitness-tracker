@@ -180,7 +180,8 @@ class GraphPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant GraphPainter oldDelegate) =>
+      data != oldDelegate.data;
 }
 
 class DataPoint {

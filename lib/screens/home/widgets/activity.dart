@@ -1,6 +1,7 @@
 import 'package:fitness/constants/colors.dart';
 import 'package:fitness/models/recentActivity.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RecentActivities extends StatelessWidget {
   const RecentActivities({super.key});
@@ -55,8 +56,8 @@ class ActivityItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: DefaultTextStyle.merge(
-          style: const TextStyle(
-            color: backgroundColor,
+          style: TextStyle(
+            color: Get.isDarkMode ? secondaryColor : backgroundColor,
             fontSize: 16,
           ),
           child: Row(

@@ -1,5 +1,6 @@
 import 'package:fitness/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final AppBar appBar;
@@ -14,17 +15,21 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       leading: IconButton(
-        icon: const Icon(
+        icon: Icon(
           Icons.arrow_back_ios,
           size: 16,
-          color: backgroundColor,
+          color: Get.isDarkMode ? secondaryColor : backgroundColor,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
-      title: const Text(
+      title: Text(
         "Activity",
         style: TextStyle(
-            color: backgroundColor, fontSize: 16, fontWeight: FontWeight.bold),
+            color: Get.isDarkMode ? secondaryColor : backgroundColor,
+            fontSize: 16,
+            fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       actions: [
