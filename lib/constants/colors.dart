@@ -8,4 +8,4 @@ const Color accentColor = Colors.deepPurple;
 const Color errorColor = Colors.red;
 const Color successColor = Colors.green;
 const Color warningColor = Color(0xfffa7a3b);
-const Color infoColor = Colors.blue;
+const Color infoColor = Color(0xff3bc6fa);

@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomeScreen(),
         '/details': (context) => const DetailsScreen(),
       },
-      initialRoute: '/details',
+      initialRoute: '/',
     );
   }
 }

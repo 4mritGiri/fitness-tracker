@@ -3,6 +3,8 @@ import 'package:fitness/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
+import 'package:get/get.dart';
+
 class Graph extends StatelessWidget {
   const Graph({super.key});
 
@@ -129,7 +131,7 @@ class GraphPainter extends CustomPainter {
         Offset(size.width / 2, size.height),
         [
           const Color(0xff30c3f9),
-          Colors.white,
+          Get.isDarkMode ? backgroundColor : Colors.white,
         ],
       )
       ..color = Colors.blue

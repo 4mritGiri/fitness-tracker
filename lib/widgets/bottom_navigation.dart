@@ -54,7 +54,7 @@ class BottomNavigation extends StatelessWidget {
                     size: 32,
                   ),
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/');
+                    // Navigator.pushReplacementNamed(context, '/');
                   },
                 ),
               ),
@@ -66,7 +66,7 @@ class BottomNavigation extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.settings),
               onPressed: () {
-                Navigator.pushNamed(context, '/details');
+                // Navigator.pushNamed(context, '/details');
               },
             ),
           ],
