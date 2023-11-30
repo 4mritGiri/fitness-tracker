@@ -1,17 +1,16 @@
 import 'package:fitness/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class Info extends StatelessWidget {
   const Info({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       height: 70,
-      // width: double.infinity,
-      child: const Row(
+      width: double.infinity,
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Stats(
